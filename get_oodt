@@ -1,0 +1,7 @@
+#!/bin/bash
+cd code
+mkdir oodt
+cd oodt
+git svn init -s https://svn.apache.org/repos/asf/oodt/
+git svn fetch
+cd ..

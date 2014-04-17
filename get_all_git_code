@@ -1,0 +1,16 @@
+#!/bin/bash
+
+./grab_new_data_json
+mkdir code
+cat data/data.json | ./jq '.[] | .["Public Code Repo"]' | grep -i '\.git\|github' | sed 's/\"//g' > code/gitrepos.txt
+cat data/data.json | ./jq '.[] | .["Public Code Repo"]' | grep -vi '\.git\|github' | sed 's/\"//g' > code/specialrepos.txt
+
+cd code
+
+cat gitrepos.txt | while read a; do git clone $a; done
+
+
+
+
+
+
